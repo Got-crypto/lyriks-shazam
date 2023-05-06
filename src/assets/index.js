@@ -1,5 +1,5 @@
-import loader from './loader.svg';
-import logo from './logo.svg';
+import loader from './loader.png';
+import logo from './logo.png';
 
 export {
   logo,
