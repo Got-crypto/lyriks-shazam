@@ -4,7 +4,10 @@ import TopPlay from "./TopPlay";
 import Error from "./Error";
 import Loader from "./Loader";
 import SongCard from "./SongCard";
-import MusicPlayer from './MusicPlayer'
+import MusicPlayer from './MusicPlayer';
+import DetailsHeader from "./DetailsHeader";
+import RelatedSongs from "./RelatedSongs";
+import SongBar from "./SongBar";
 
 
 export {
@@ -15,4 +18,7 @@ export {
     SongCard,
     Loader,
     MusicPlayer,
+    DetailsHeader,
+    RelatedSongs,
+    SongBar,
 }
