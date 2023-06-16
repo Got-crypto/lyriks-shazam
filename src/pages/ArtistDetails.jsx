@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 
 import { DetailsHeader, Error, Loader, RelatedSongs } from '../components'
-import { useGetArtistDetailsQuery, useGetSongDetailsQuery, useGetSongRelatedQuery } from "../redux/services/shazamCore"
+import { useGetArtistDetailsQuery, useGetArtistTopSongsQuery, useGetSongDetailsQuery, useGetSongRelatedQuery } from "../redux/services/shazamCore"
 
 export default function ArtistDetails(){
     
@@ -11,21 +11,29 @@ export default function ArtistDetails(){
     const { activeSong, isPlaying } = useSelector( state => state.player )
 
     const {data: artistData, isFetching: isFetchingArtistDetails, error: artistError } = useGetArtistDetailsQuery({artistId})
+    const {data: artistSongs, isFetching: isFetchingArtistTopSongs, error: artistTopSongsError } = useGetArtistTopSongsQuery({artistId})
 
-    if( isFetchingArtistDetails ) return <Loader title='Searching artist details...' />
+    console.log('artistData', artistSongs)
+    console.log('artistData', artistData)
 
-    if(artistError) return <Error />
+    if( isFetchingArtistDetails || isFetchingArtistTopSongs ) return <Loader title='Searching artist details...' />
+
+    if(artistError || artistTopSongsError) return <Error />
 
     return (
-        <div className="flex flex-col">
-            <DetailsHeader artistId={artistId} artistData={artistData} />
-        
-            <RelatedSongs 
-                data={Object.values(artistData?.song)}
-                artistId={artistId}
-                isPlaying={isPlaying}
-                activeSong={activeSong}
-            />
-        </div>
+    <>
+        {artistData && 
+            <div className="flex flex-col">
+                <DetailsHeader artistId={artistId} artistData={artistData} isArtistDetails={true} />
+            
+                <RelatedSongs 
+                    data={artistSongs?.data}
+                    artistId={artistId}
+                    isPlaying={isPlaying}
+                    activeSong={activeSong}
+                />
+            </div>
+        }
+    </>
     )
 }

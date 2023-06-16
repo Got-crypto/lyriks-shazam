@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom"
 
 
-export default function DetailsHeader({artistId, artistData, songData}){
+export default function DetailsHeader({artistId, artistData, songData, isArtistDetails}){
     
-    const artist = artistData?.artists[artistId].attributes
+    const artist = isArtistDetails ? artistData?.data[0]?.attributes : artistData?.artists[artistId].attributes
 
     console.log('artist', artist)
     
     console.log('artistData', artistData)
+    console.log('artistDataURL', artist?.artwork?.url.replace('{w}', '500').replace('{h}', '500'))
 
     return (
         <div className="relative w-full flex flex-col">
@@ -16,7 +17,7 @@ export default function DetailsHeader({artistId, artistData, songData}){
             <div className="absolute inset-0 flex items-center">
                 <img 
                     alt="art"
-                    src={artistId ? artist?.artwork?.url.replace('{W}', '500').replace('{h}', '500') : songData?.images?.coverart}
+                    src={artistId ? artist?.artwork?.url.replace('{w}', '500').replace('{h}', '500') : songData?.images?.coverart}
                     className="sm:w-48 w-28 sm:h-48 h-28 rounded-full object-cover border-2 shadow-xl shadow-black"
                 />
 

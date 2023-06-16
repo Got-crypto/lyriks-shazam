@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { useGetChartsQuery, useGetTopSongsQuery } from '../redux/services/shazamCore'
 
+import { selectGenreListId } from '../redux/features/playerSlice'
+
 export default function Discover(){
 
     const dispatch = useDispatch()
 
-    const {activeSong, isPlaying} = useSelector( state => state.player )
+    const {activeSong, isPlaying, genreListId} = useSelector( state => state.player )
 
     const {data: genres, isFetching, error} = useGetChartsQuery()
     const {data: songs} = useGetTopSongsQuery()
@@ -22,7 +24,7 @@ export default function Discover(){
             <div className='w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10 '>
                 <h2 className='font-bold text-3xl text-white text-left'>Discover {genreTitle}</h2>
                 <select
-                    onChange={()=>{}}
+                    onChange={(e)=>dispatch(selectGenreListId(e.target.value))}
                     value=''
                     className='bg-black text-gray-300 p-3 text-sm rounded-lg outline-none sm:mt-0 mt-5'
                 >

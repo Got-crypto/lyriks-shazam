@@ -2,8 +2,6 @@ import SongBar from "./SongBar";
 
 export default function RelatedSongs({ data, isPlaying, activeSong, handlePauseClick, handlePlayClick, artistId }){
 
-    console.log('data', data)
-    
     return(
         <div className='flex flex-col'>
             <h1 className='font-bold text-3xl text-white'>Related Songs:</h1>
