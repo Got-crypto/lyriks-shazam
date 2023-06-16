@@ -5,11 +5,6 @@ export default function DetailsHeader({artistId, artistData, songData, isArtistD
     
     const artist = isArtistDetails ? artistData?.data[0]?.attributes : artistData?.artists[artistId].attributes
 
-    console.log('artist', artist)
-    
-    console.log('artistData', artistData)
-    console.log('artistDataURL', artist?.artwork?.url.replace('{w}', '500').replace('{h}', '500'))
-
     return (
         <div className="relative w-full flex flex-col">
             <div className="w-full bg-gradient-to-l from-transparent to-black sm:h-48 h-48" />

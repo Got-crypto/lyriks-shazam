@@ -25,8 +25,6 @@ const NavLinks = ({handleClick}) => {
 export default function Sidebar(){
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-    console.log('process.env.REACT_PUBLIC_X_RAPIDAPI_KEY', process.env.REACT_APP_X_RAPIDAPI_KEY)
-
     return (
         <>
             <div className='md:flex hidden flex-col w-[240px] py-10 px-4 bg-[#191624]'>

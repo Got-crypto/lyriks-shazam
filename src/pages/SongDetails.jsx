@@ -10,8 +10,6 @@ export default function SongDetails(){
     const dispatch = useDispatch()
     const { songid } = useParams()
 
-    console.log('songid', songid)
-
     const { activeSong, isPlaying } = useSelector( state => state.player )
 
     const { data: songData, isFetching: isFetchingSongDEtails, error: isFetchingSongError } = useGetSongDetailsQuery({ songid })

@@ -13,9 +13,6 @@ export default function ArtistDetails(){
     const {data: artistData, isFetching: isFetchingArtistDetails, error: artistError } = useGetArtistDetailsQuery({artistId})
     const {data: artistSongs, isFetching: isFetchingArtistTopSongs, error: artistTopSongsError } = useGetArtistTopSongsQuery({artistId})
 
-    console.log('artistData', artistSongs)
-    console.log('artistData', artistData)
-
     if( isFetchingArtistDetails || isFetchingArtistTopSongs ) return <Loader title='Searching artist details...' />
 
     if(artistError || artistTopSongsError) return <Error />

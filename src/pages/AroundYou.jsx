@@ -9,8 +9,6 @@ export default function AroundYou(){
     const [loading, setLoading] = useState(true);
     const { activeSong, isPlaying } = useSelector(({player}) => player);
 
-    console.log('country', country)
-
     useEffect(() => {
         const getLocation = async () => {
             try {

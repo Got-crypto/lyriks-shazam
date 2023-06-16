@@ -11,8 +11,6 @@ export default function Search(){
 
     const { data, isFetching, error } = useGetSongsBySearchQuery({searchTerm})
 
-    console.log('data', data)
-
     const songs = data?.tracks?.hits?.map(song => song.track)
 
     if(isFetching) return <Loader title='Loading top charts' />
